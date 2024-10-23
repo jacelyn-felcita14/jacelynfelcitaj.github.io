@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.profile-header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    padding: 2rem;
+    text-align: center;
+    display: none; /* Hide all sections by default */
+}
+
+section.active {
+    display: block; /* Show the active section */
+}
+
+#skills {
+    background-color: #e0f7fa;
+}
+
+#content {
+    background-color: #ffe0b2;
+}
+
+#certificates {
+    background-color: #dcedc8;
+}
+
+#hobbies {
+    background-color: #f8bbd0;
+}
+
+#education {
+    background-color: #d1c4e9;
+}
+
+#about {
+    background-color: #ffccbc;
+}
+
+#contact {
+    background-color: #c8e6c9;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="profile-header">
+            <img src="jacs.jpg" alt="Profile Picture" class="profile-pic">
+            <h1>Jacelyn Felcita</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#skills" class="tab-link" data-tab="skills">Skills</a></li>
+                <li><a href="#content" class="tab-link" data-tab="content">Content</a></li>
+                <li><a href="#certificates" class="tab-link" data-tab="certificates">Certificates</a></li>
+                <li><a href="#hobbies" class="tab-link" data-tab="hobbies">Hobbies</a></li>
+                <li><a href="#education" class="tab-link" data-tab="education">Education</a></li>
+                <li><a href="#about" class="tab-link" data-tab="about">About Me</a></li>
+                <li><a href="#contact" class="tab-link" data-tab="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="skills" class="tab-content">
+        <h2>Skills</h2>
+        <p><br>Programming languages: C, C++, PYTHON, JAVA.<br>
+           <br>Web Development:knowledge about HTML, CSS, JAVASCRIPT.<br>
+           <br>Learning database Management.<br>
+           <br>Good Communication skills and technical writing.<br>
+        </p>
+    </section>
+    <section id="content" class="tab-content">
+        <h2>Content</h2>
+        <p>"Learning new technologies, its uses and the advanced features present in it
+            and its implementation in real life". 
+
+        </p>
+    </section>
+    <section id="certificates" class="tab-content">
+        <h2>Certificates</h2>
+        <p><br>Got Certified in Hackathon for decoding.<br> 
+           <br></p>
+    </section>
+    <section id="hobbies" class="tab-content">
+        <h2>Hobbies</h2>
+        <p><br>Enjoying reading books based on web technologies.<br>
+           <br>CODING CHALLENGES: participated in HACKATHON.<br>
+           <br>Creating a simple webpages to make it interactive.<br>
+           <br>Watching videos regarding fullstack development.<br>
+           </p>
+    </section>
+    <section id="education" class="tab-content">
+        <h2>Education</h2>
+        <p><br>Course: Btech.CSE.Cybersecurity and Internet of things.<br>
+           <br>College: Sri Ramachandra Institute of Engineering and Technology(SRET)<br>
+           <br>Place: Porur,Chennai,Tamil Nadu.<br>
+        </p>
+    </section>
+    <section id="about" class="tab-content">
+        <h2>About Me</h2>
+        <p><br>Name: JACELYN FELCITA J<br>
+           <br>AGE: 19<br>
+           <br>EDUCATION: Btech.cse.Cyb and iot<br>
+           <br>GRADUATION: 2023-2027<br>
+           <br>I have done web creation BLOG WEBPAGE using HTML, CSS, JAVASCRIPT.<br>
+           <br>Created a project based on crime case management system,quiz uisng c programing language.<br>
+        </p>
+    </section>
+    <section id="contact" class="tab-content">
+        <h2>Contact Me</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+    <footer>
+        <p>© 2024 Jacelyn Felcita. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetTab = e.target.getAttribute('data-tab');
+
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                if (content.id === targetTab) {
+                    content.classList.add('active');
+                }
+            });
+        });
+    });
+
+    // Show the first tab by default
+    document.querySelector('.tab-link').click();
+});
+
+    </script>
+</body>
+</html>
