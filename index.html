@@ -4,205 +4,348 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #1d1f21;
+            color: #dcdcdc;
+            position: relative;
+        }
 
-header {
-    background: #333;
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
-}
+        header {
+            background: #333;
+            color: #dcdcdc;
+            padding: 1rem 0;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
 
-.profile-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-}
+        header:before {
+            content: "✦"; /* Decorative symbol */
+            font-size: 2rem;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -20px;
+            color: #6a1b9a; /* Symbol color */
+        }
 
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-right: 1rem;
-}
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
 
-.profile-header h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 0;
-}
+        .profile-section {
+            width: 25%;
+            text-align: center;
+            background-color: #2e2f33;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            border-radius: 8px; /* Rounded corners */
+            border: 2px solid #6a1b9a; /* Border with color */
+        }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-}
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
 
-nav ul li {
-    margin: 0 1rem;
-}
+        .work-together {
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            color: #dcdcdc;
+        }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
+        .social-icons {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap; /* Allows wrapping if needed */
+        }
 
-section {
-    padding: 2rem;
-    text-align: center;
-    display: none; /* Hide all sections by default */
-}
+        .social-link {
+            text-decoration: none;
+            color: white;
+            font-size: 1.5rem;
+            padding: 10px 15px; /* Adjusted padding for better button appearance */
+            border-radius: 5px;
+            background: linear-gradient(45deg, #6a1b9a, #8e24aa);
+            transition: transform 0.3s;
+            display: inline-block;
+        }
 
-section.active {
-    display: block; /* Show the active section */
-}
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
 
-#skills {
-    background-color: #e0f7fa;
-}
+        .content-section {
+            width: 70%;
+            padding-left: 2rem;
+            position: relative;
+            z-index: 1;
+        }
 
-#content {
-    background-color: #ffe0b2;
-}
+        .content-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            color: #fff;
+            padding: 1rem;
+            border: 1px solid #444;
+            position: relative;
+            overflow: hidden; /* Clip the pseudo-elements */
+        }
 
-#certificates {
-    background-color: #dcedc8;
-}
+        .content-section h2:after {
+            content: "❖"; /* Decorative symbol */
+            font-size: 1rem;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            color: #6a1b9a; /* Symbol color */
+            transition: transform 0.3s;
+        }
 
-#hobbies {
-    background-color: #f8bbd0;
-}
+        .content-section h2:hover:after {
+            transform: scale(1.5); /* Enlarge on hover */
+        }
 
-#education {
-    background-color: #d1c4e9;
-}
+        /* Heading Dark Aesthetic Colors */
+        h2[data-tab="skills"] {
+            background-color: #6a1b9a;
+        }
 
-#about {
-    background-color: #ffccbc;
-}
+        h2[data-tab="content"] {
+            background-color: #283593;
+        }
 
-#contact {
-    background-color: #c8e6c9;
-}
+        h2[data-tab="certificates"] {
+            background-color: #00695c;
+        }
 
-footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
-}
+        h2[data-tab="hobbies"] {
+            background-color: #8e24aa;
+        }
 
+        h2[data-tab="education"] {
+            background-color: #0277bd;
+        }
+
+        h2[data-tab="about"] {
+            background-color: #1b5e20;
+        }
+
+        h2[data-tab="contact"] {
+            background-color: #4e342e;
+        }
+
+        .content-box {
+            display: none;
+            padding: 1rem;
+            border: 1px solid #444;
+            background-color: #303030;
+            color: #dcdcdc;
+            margin-bottom: 1rem;
+        }
+
+        /* Content Box Dark Aesthetic Colors */
+        #skills {
+            background-color: #4a148c;
+        }
+
+        #content {
+            background-color: #1a237e;
+        }
+
+        #certificates {
+            background-color: #004d40;
+            display: flex;
+            flex-direction: column; /* Vertical format */
+            align-items: center; /* Center align */
+        }
+
+        #certificates img {
+            width: 80%; /* Adjust image size */
+            margin: 5px 0; /* Space between images */
+            display: none; /* Initially hidden */
+            border: 2px solid #6a1b9a; /* Border for images */
+            border-radius: 5px; /* Rounded corners for images */
+        }
+
+        #hobbies {
+            background-color: #6a1b9a;
+        }
+
+        #education {
+            background-color: #01579b;
+        }
+
+        #about {
+            background-color: #0d5302;
+        }
+
+        #contact {
+            background-color: #3e2723;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .active-content {
+            display: block;
+            animation: slideDown 0.5s ease-in-out;
+        }
+
+        @keyframes slideDown {
+            from { height: 0; opacity: 0; }
+            to { height: auto; opacity: 1; }
+        }
+        
     </style>
 </head>
 <body>
     <header>
-        <div class="profile-header">
-            <img src="jacs.jpg" alt="Profile Picture" class="profile-pic">
-            <h1>Jacelyn Felcita</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#skills" class="tab-link" data-tab="skills">Skills</a></li>
-                <li><a href="#content" class="tab-link" data-tab="content">Content</a></li>
-                <li><a href="#certificates" class="tab-link" data-tab="certificates">Certificates</a></li>
-                <li><a href="#hobbies" class="tab-link" data-tab="hobbies">Hobbies</a></li>
-                <li><a href="#education" class="tab-link" data-tab="education">Education</a></li>
-                <li><a href="#about" class="tab-link" data-tab="about">About Me</a></li>
-                <li><a href="#contact" class="tab-link" data-tab="contact">Contact</a></li>
-            </ul>
-        </nav>
+        <h1>Jacelyn Felcita's Portfolio</h1>
     </header>
-    <section id="skills" class="tab-content">
-        <h2>Skills</h2>
-        <p><br>Programming languages: C, C++, PYTHON, JAVA.<br>
-           <br>Web Development:knowledge about HTML, CSS, JAVASCRIPT.<br>
-           <br>Learning database Management.<br>
-           <br>Good Communication skills and technical writing.<br>
-        </p>
-    </section>
-    <section id="content" class="tab-content">
-        <h2>Content</h2>
-        <p>"Learning new technologies, its uses and the advanced features present in it
-            and its implementation in real life". 
 
-        </p>
-    </section>
-    <section id="certificates" class="tab-content">
-        <h2>Certificates</h2>
-        <p><br>Got Certified in Hackathon for decoding.<br> 
-           <br></p>
-    </section>
-    <section id="hobbies" class="tab-content">
-        <h2>Hobbies</h2>
-        <p><br>Enjoying reading books based on web technologies.<br>
-           <br>CODING CHALLENGES: participated in HACKATHON.<br>
-           <br>Creating a simple webpages to make it interactive.<br>
-           <br>Watching videos regarding fullstack development.<br>
-           </p>
-    </section>
-    <section id="education" class="tab-content">
-        <h2>Education</h2>
-        <p><br>Course: Btech.CSE.Cybersecurity and Internet of things.<br>
-           <br>College: Sri Ramachandra Institute of Engineering and Technology(SRET)<br>
-           <br>Place: Porur,Chennai,Tamil Nadu.<br>
-        </p>
-    </section>
-    <section id="about" class="tab-content">
-        <h2>About Me</h2>
-        <p><br>Name: JACELYN FELCITA J<br>
-           <br>AGE: 19<br>
-           <br>EDUCATION: Btech.cse.Cyb and iot<br>
-           <br>GRADUATION: 2023-2027<br>
-           <br>I have done web creation BLOG WEBPAGE using HTML, CSS, JAVASCRIPT.<br>
-           <br>Created a project based on crime case management system,quiz uisng c programing language.<br>
-        </p>
-    </section>
-    <section id="contact" class="tab-content">
-        <h2>Contact Me</h2>
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </section>
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <img src="jacs.jpg" alt="Profile Picture" class="profile-pic">
+            <p class="work-together">Let's Work Together!</p>
+            <div class="social-icons">
+                <a href="https://twitter.com" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://facebook.com" class="social-link" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://linkedin.com" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="personal-quote">"Innovation distinguishes between a leader and a follower."</p>
+            <div class="poll-section">
+                <p class="poll-title">What's your current status?</p>
+                <label class="poll-option"><input type="radio" name="status" value="student"> Student</label>
+                <label class="poll-option"><input type="radio" name="status" value="graduate"> Graduate</label>
+                <label class="poll-option"><input type="radio" name="status" value="working"> Working</label>
+                <label class="poll-option"><input type="radio" name="status" value="other"> Other</label>
+            </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content-section">
+            <h2 data-tab="skills">Skills</h2>
+            <div class="content-box" id="skills">
+                <p>
+                    Programming languages: C, C++, Python, Java.<br>
+                    Web Development: HTML, CSS, JavaScript.<br>
+                    Learning database management.<br>
+                    Good communication and technical writing skills.
+                </p>
+            </div>
+
+            <h2 data-tab="content">Content</h2>
+            <div class="content-box" id="content">
+                <p>
+                    Learning new technologies, understanding their uses, and implementing them in real life.
+                </p>
+            </div>
+
+            <h2 data-tab="certificates">Certificates</h2>
+            <div class="content-box" id="certificates">
+                <img src="C:\\Users\\J.Jacelyn Felcita\\Documents\\file1.jpg" alt="Certificate 1">
+                <img src="C:\\Users\\J.Jacelyn Felcita\\Documents\\file2.jpg" alt="Certificate 2">
+                <img src="C:\\Users\\J.Jacelyn Felcita\\Documents\\file3.jpg" alt="Certificate 3">
+            </div>
+
+            <h2 data-tab="hobbies">Hobbies</h2>
+            <div class="content-box" id="hobbies">
+                <p>
+                    Enjoy reading books on web technologies.<br>
+                    Participated in coding challenges and Hackathons.<br>
+                    Creating simple web pages to make them interactive.<br>
+                    Watching videos on fullstack development.
+                </p>
+            </div>
+
+            <h2 data-tab="education">Education</h2>
+            <div class="content-box" id="education">
+                <p>
+                    Graduated with a degree in Computer Science.<br>
+                    Attended various workshops on Web Development.
+                </p>
+            </div>
+
+            <h2 data-tab="about">About Me</h2>
+            <div class="content-box" id="about">
+                <p>
+                    A passionate learner, eager to understand new technologies.<br>
+                    Always looking for opportunities to grow and develop.
+                </p>
+            </div>
+
+            <h2 data-tab="contact">Contact</h2>
+            <div class="content-box" id="contact">
+                <p>Email: jacelyn.felcita@example.com</p>
+                <p>Phone: +1234567890</p>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p>© 2024 Jacelyn Felcita. All rights reserved.</p>
+        <p>&copy; 2024 Jacelyn Felcita. All rights reserved.</p>
     </footer>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const tabLinks = document.querySelectorAll('.tab-link');
-    const tabContents = document.querySelectorAll('.tab-content');
+        const headings = document.querySelectorAll("h2");
+        headings.forEach(heading => {
+            heading.addEventListener("click", () => {
+                const contentBox = document.getElementById(heading.dataset.tab);
+                const isActive = contentBox.classList.contains("active-content");
 
-    tabLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetTab = e.target.getAttribute('data-tab');
+                // Close all other content boxes
+                document.querySelectorAll(".content-box").forEach(box => {
+                    box.classList.remove("active-content");
+                    box.style.display = "none"; // Hide content
+                });
 
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-                if (content.id === targetTab) {
-                    content.classList.add('active');
+                // Toggle the clicked content box
+                if (!isActive) {
+                    contentBox.classList.add("active-content");
+                    contentBox.style.display = "block"; // Show content
+                } else {
+                    contentBox.classList.remove("active-content");
+                    contentBox.style.display = "none"; // Hide content
                 }
             });
         });
-    });
 
-    // Show the first tab by default
-    document.querySelector('.tab-link').click();
-});
-
+        // Display certificates on click
+        const certificatesHeading = document.querySelector('[data-tab="certificates"]');
+        certificatesHeading.addEventListener("click", () => {
+            const images = document.querySelectorAll('#certificates img');
+            images.forEach(img => {
+                img.style.display = img.style.display === "none" || img.style.display === "" ? "block" : "none";
+            });
+        });
     </script>
 </body>
 </html>
