@@ -11,18 +11,15 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background: #1d1f21;
-            color: #dcdcdc;
-            position: relative;
+            background: #A9CCE3; /* Soft Blue */
+            color: #333;
         }
 
         header {
-            background: #333;
-            color: #dcdcdc;
+            background: #5DADE2; /* Slightly darker blue */
+            color: #fff;
             padding: 1rem 0;
             text-align: center;
-            position: relative;
-            z-index: 1;
         }
 
         header:before {
@@ -32,7 +29,7 @@
             left: 50%;
             transform: translateX(-50%);
             top: -20px;
-            color: #6a1b9a; /* Symbol color */
+            color: black; /* Symbol color */
         }
 
         .container {
@@ -46,11 +43,12 @@
         .profile-section {
             width: 25%;
             text-align: center;
-            background-color: #2e2f33;
+            background-color: #F2F4F4; /* Light Gray */
             padding: 1rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            border-radius: 8px; /* Rounded corners */
-            border: 2px solid #6a1b9a; /* Border with color */
+            border-radius: 8px;
+            border: 2px solid #D5DBDB;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
         }
 
         .profile-pic {
@@ -58,13 +56,19 @@
             height: 150px;
             border-radius: 50%;
             margin-bottom: 1rem;
+            transition: box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .profile-pic.blue-glow {
+            box-shadow: 0 0 15px rgba(93, 173, 226, 1); /* Blue glow */
         }
 
         .work-together {
             font-weight: bold;
             font-size: 1.5rem;
             margin-top: 1rem;
-            color: #dcdcdc;
+            color: #5D6D7E;
         }
 
         .social-icons {
@@ -72,133 +76,55 @@
             display: flex;
             justify-content: center;
             gap: 1rem;
-            flex-wrap: wrap; /* Allows wrapping if needed */
+            flex-wrap: wrap;
         }
 
         .social-link {
             text-decoration: none;
             color: white;
             font-size: 1.5rem;
-            padding: 10px 15px; /* Adjusted padding for better button appearance */
+            padding: 10px 15px;
             border-radius: 5px;
-            background: linear-gradient(45deg, #6a1b9a, #8e24aa);
+            background: #F5B7B1; /* Soft Coral */
             transition: transform 0.3s;
             display: inline-block;
         }
 
         .social-link:hover {
             transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .content-section {
             width: 70%;
             padding-left: 2rem;
-            position: relative;
-            z-index: 1;
         }
 
         .content-section h2 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
             cursor: pointer;
-            color: #fff;
+            color: #5D6D7E;
             padding: 1rem;
-            border: 1px solid #444;
+            border: 1px solid #D5DBDB;
+            background-color: #F2F4F4; /* Light Gray */
             position: relative;
-            overflow: hidden; /* Clip the pseudo-elements */
-        }
-
-        .content-section h2:after {
-            content: "❖"; /* Decorative symbol */
-            font-size: 1rem;
-            position: absolute;
-            right: 10px;
-            bottom: 10px;
-            color: #6a1b9a; /* Symbol color */
-            transition: transform 0.3s;
-        }
-
-        .content-section h2:hover:after {
-            transform: scale(1.5); /* Enlarge on hover */
-        }
-
-        /* Heading Dark Aesthetic Colors */
-        h2[data-tab="skills"] {
-            background-color: #6a1b9a;
-        }
-
-        h2[data-tab="content"] {
-            background-color: #283593;
-        }
-
-        h2[data-tab="certificates"] {
-            background-color: #00695c;
-        }
-
-        h2[data-tab="hobbies"] {
-            background-color: #8e24aa;
-        }
-
-        h2[data-tab="education"] {
-            background-color: #0277bd;
-        }
-
-        h2[data-tab="about"] {
-            background-color: #1b5e20;
-        }
-
-        h2[data-tab="contact"] {
-            background-color: #4e342e;
+            transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
         }
 
         .content-box {
             display: none;
             padding: 1rem;
-            border: 1px solid #444;
-            background-color: #303030;
-            color: #dcdcdc;
+            background-color: #e5f3f9; /* Slightly off-white */
+            color: #333;
             margin-bottom: 1rem;
+            border: 1px solid #D5DBDB;
+            border-radius: 5px;
+            transition: box-shadow 0.3s ease-in-out;
         }
 
-        /* Content Box Dark Aesthetic Colors */
-        #skills {
-            background-color: #4a148c;
-        }
-
-        #content {
-            background-color: #1a237e;
-        }
-
-        #certificates {
-            background-color: #004d40;
-            display: flex;
-            flex-direction: column; /* Vertical format */
-            align-items: center; /* Center align */
-        }
-
-        #certificates img {
-            width: 80%; /* Adjust image size */
-            margin: 5px 0; /* Space between images */
-            display: none; /* Initially hidden */
-            border: 2px solid #6a1b9a; /* Border for images */
-            border-radius: 5px; /* Rounded corners for images */
-        }
-
-        #hobbies {
-            background-color: #6a1b9a;
-        }
-
-        #education {
-            background-color: #01579b;
-        }
-
-        #about {
-            background-color: #0d5302;
-        }
-
-        #contact {
-            background-color: #3e2723;
+        .active-content.blue-glow {
+            box-shadow: 0 0 15px rgba(93, 173, 226, 1); /* Blue glow */
         }
 
         footer {
@@ -221,7 +147,19 @@
             from { height: 0; opacity: 0; }
             to { height: auto; opacity: 1; }
         }
+
+        /* Light glow effect for headings when clicked */
+        h2.light-effect {
+            box-shadow: 0 0 15px rgba(93, 173, 226, 1); /* Blue glow */
+            border-color: #3498DB; /* Vibrant blue border */
+            transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+        }
+        .pic {
+        width: 50%; 
+        height: auto; 
+        }
         
+
     </style>
 </head>
 <body>
@@ -232,7 +170,7 @@
     <div class="container">
         <!-- Profile Section -->
         <div class="profile-section">
-            <img src="jacs.jpg" alt="Profile Picture" class="profile-pic">
+            <img src="jacs.jpg" alt="Profile Picture" class="profile-pic" id="profile-pic">
             <p class="work-together">Let's Work Together!</p>
             <div class="social-icons">
                 <a href="https://twitter.com" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -241,13 +179,7 @@
                 <a href="https://github.com" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
             </div>
             <p class="personal-quote">"Innovation distinguishes between a leader and a follower."</p>
-            <div class="poll-section">
-                <p class="poll-title">What's your current status?</p>
-                <label class="poll-option"><input type="radio" name="status" value="student"> Student</label>
-                <label class="poll-option"><input type="radio" name="status" value="graduate"> Graduate</label>
-                <label class="poll-option"><input type="radio" name="status" value="working"> Working</label>
-                <label class="poll-option"><input type="radio" name="status" value="other"> Other</label>
-            </div>
+            
         </div>
 
         <!-- Content Section -->
@@ -265,87 +197,102 @@
             <h2 data-tab="content">Content</h2>
             <div class="content-box" id="content">
                 <p>
-                    Learning new technologies, understanding their uses, and implementing them in real life.
+                    <br>Learning new technologies, understanding their uses, and implementing them in real life.Created a 
+                    blog webpage for my internship program,it was amazing and include many new elements.I have named it as 
+                    "SPORTS ACADEMY".It contains many toggling buttons.By clicking it we can view many pages linked with that.
+                    And also I have included webcam enabling in my project,as it takes the picture of the person registering for the 
+                    sports academy.And I have included alternative options for that.This was my first big project I have done in my college. 
                 </p>
             </div>
 
             <h2 data-tab="certificates">Certificates</h2>
             <div class="content-box" id="certificates">
-                <img src="C:\\Users\\J.Jacelyn Felcita\\Documents\\file1.jpg" alt="Certificate 1">
-                <img src="C:\\Users\\J.Jacelyn Felcita\\Documents\\file2.jpg" alt="Certificate 2">
-                <img src="C:\\Users\\J.Jacelyn Felcita\\Documents\\file3.jpg" alt="Certificate 3">
+                <img src="file1.jpg" alt="Certificate 1" class ="pic">
+                <img src="file2.jpg" alt="Certificate 2" class ="pic">
+                <img src="file3.jpg" alt="Certificate 3" class ="pic">
             </div>
 
             <h2 data-tab="hobbies">Hobbies</h2>
             <div class="content-box" id="hobbies">
                 <p>
-                    Enjoy reading books on web technologies.<br>
-                    Participated in coding challenges and Hackathons.<br>
-                    Creating simple web pages to make them interactive.<br>
-                    Watching videos on fullstack development.
+                    <br>* Coding<br>
+                    <br>* Reading<br>
+                    <br>* Fitness<br>
+                    <br>* Articles<br>
                 </p>
             </div>
 
             <h2 data-tab="education">Education</h2>
             <div class="content-box" id="education">
                 <p>
-                    Graduated with a degree in Computer Science.<br>
-                    Attended various workshops on Web Development.
+                    <br>DEGREE: Btech.cse.CybersecurityandIOT<BR>
+                    <br>YEAR: 2023-2027<br>
+                    <br>UNIVERSITY: Sri Ramachandra faculty of Engineering and Technology<br>
+                    <br>Participated in various workshops based on web development.<br>
+                    <br>Participated in HACKATHON in many colleges.<br>
+                    <br>Learning the use of AI tools.<br>
+                    
                 </p>
             </div>
 
             <h2 data-tab="about">About Me</h2>
             <div class="content-box" id="about">
                 <p>
-                    A passionate learner, eager to understand new technologies.<br>
-                    Always looking for opportunities to grow and develop.
+                    A passionate web developer eager to learn and improve skills.Seeking opportunities to 
+                    contribute and grow in the tech field.I have a good rapo in the technical world. I have done 'CRIMECASE MANAGEMENT'
+                    project using c program which is my first project.And also created a 'QUIZ' project using c program which is the basic one I have done.
+                    By keep on doing many projects I got a interset in learning programming languages.Later on I have done 'BUDGET TRACKING' project using
+                    java programming language.And then I have done mini project uisng C++ language.By keep on laerning new languages I come to know that we have many 
+                    technologies to learn.So I started Knowning new things and start to learn many AI tools.By this track I'll achieve my goal one day.
+                    
                 </p>
             </div>
-
-            <h2 data-tab="contact">Contact</h2>
-            <div class="content-box" id="contact">
-                <p>Email: jacelyn.felcita@example.com</p>
-                <p>Phone: +1234567890</p>
-            </div>
+        </div>
+        <div class="live-typing">
+            <h2 id="typing-effect"></h2>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2024 Jacelyn Felcita. All rights reserved.</p>
+        <p>&copy; 2024 Jacelyn Felcita. All Rights Reserved.</p>
     </footer>
 
     <script>
+        const profilePic = document.getElementById("profile-pic");
+        profilePic.addEventListener("click", () => {
+            profilePic.classList.toggle("blue-glow");
+        });
+
         const headings = document.querySelectorAll("h2");
         headings.forEach(heading => {
             heading.addEventListener("click", () => {
                 const contentBox = document.getElementById(heading.dataset.tab);
                 const isActive = contentBox.classList.contains("active-content");
 
-                // Close all other content boxes
+                // Close all other content boxes and remove light effect from headings
                 document.querySelectorAll(".content-box").forEach(box => {
                     box.classList.remove("active-content");
+                    box.classList.remove("blue-glow"); // Change to blue glow
                     box.style.display = "none"; // Hide content
                 });
+                document.querySelectorAll("h2").forEach(h => h.classList.remove("light-effect")); // Remove light-effect from other headings
 
-                // Toggle the clicked content box
+                // Toggle the clicked content box and apply light effect to heading
                 if (!isActive) {
                     contentBox.classList.add("active-content");
+                    contentBox.classList.add("blue-glow"); // Change to blue glow for content box
                     contentBox.style.display = "block"; // Show content
+                    heading.classList.add("light-effect"); // Add glow to the heading
                 } else {
                     contentBox.classList.remove("active-content");
+                    contentBox.classList.remove("blue-glow"); // Remove glow from content box
                     contentBox.style.display = "none"; // Hide content
+                    heading.classList.remove("light-effect"); // Remove glow from heading
                 }
             });
         });
-
-        // Display certificates on click
-        const certificatesHeading = document.querySelector('[data-tab="certificates"]');
-        certificatesHeading.addEventListener("click", () => {
-            const images = document.querySelectorAll('#certificates img');
-            images.forEach(img => {
-                img.style.display = img.style.display === "none" || img.style.display === "" ? "block" : "none";
-            });
-        });
+        
+        
     </script>
 </body>
 </html>
